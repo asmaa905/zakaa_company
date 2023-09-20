@@ -1,0 +1,174 @@
+<template>
+  <div class="content d-flex">
+    <div class="container">
+
+    <div class="leftSide d-flex align-items-end flex-column">
+      <h2>حلول تقنية متكاملة</h2>
+      <p>ننشئ ونطور الحلول التقنية للشركات والمؤسسات
+         في المراحل المختلفة بداية من الإنشاء حتى الانطلاق
+          بالإضافة للدعم التقني والمتابعة المستمرة</p>
+          <h3>تسويق وتطوير الأعمال</h3>
+          <h3>الدراسات والإستشارات</h3>
+          <h3> تدريب وتأهيل </h3>
+    </div>
+    <div class="middle ">
+      <div class="chield m-auto"></div>
+    </div>
+    <div class="d-flex justify-content-between">
+      <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80" fill="none">
+  <g clip-path="url(#clip0_612_65)">
+    <path d="M31.8788 40.8828C32.66 41.8594 33.9263 41.8594 34.7075 40.8828L36.1213 39.1156C36.9025 38.1391 36.9025 36.5563 36.1213 35.5797L31.6562 30L36.12 24.4188C36.9012 23.4422 36.9012 21.8594 36.12 20.8828L34.7062 19.1156C33.925 18.1391 32.6587 18.1391 31.8775 19.1156L24.585 28.2312C23.8037 29.2078 23.8037 30.7906 24.585 31.7672L31.8788 40.8828ZM43.88 39.1172L45.2938 40.8844C46.075 41.8609 47.3413 41.8609 48.1225 40.8844L55.415 31.7688C56.1963 30.7922 56.1963 29.2094 55.415 28.2328L48.1225 19.1172C47.3413 18.1406 46.075 18.1406 45.2938 19.1172L43.88 20.8844C43.0988 21.8609 43.0988 23.4437 43.88 24.4203L48.3438 30L43.88 35.5812C43.0988 36.5578 43.0988 38.1406 43.88 39.1172ZM78 65H47.6925C47.6 68.0953 45.8538 70 43.6 70H36C33.6637 70 31.8725 67.2703 31.9038 65H2C0.9 65 0 66.125 0 67.5V70C0 75.5 3.6 80 8 80H72C76.4 80 80 75.5 80 70V67.5C80 66.125 79.1 65 78 65ZM72 7.5C72 3.375 69.3 0 66 0H14C10.7 0 8 3.375 8 7.5V60H72V7.5ZM64 50H16V10H64V50Z" fill="url(#paint0_linear_612_65)"/>
+  </g>
+  <defs>
+    <linearGradient id="paint0_linear_612_65" x1="0" y1="40" x2="82.8" y2="40" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#00ABAD"/>
+      <stop offset="0.921875" stop-color="#28649C"/>
+    </linearGradient>
+    <clipPath id="clip0_612_65">
+      <rect width="80" height="80" fill="white"/>
+    </clipPath>
+  </defs>
+</svg>
+      <div class="rightSide d-flex flex-column align-items-end">
+      <h2>خدماتنا</h2>
+      <p>نساعد عملائنا على تبسيط أعمالهم من خلال مجموعة
+         الحلول والخدمات والتطبيقات التي تساعد على تسهيل سير وتكامل الأعمال بالإضافة
+          إلى الدعم التقني والمتابعة المستمرة.
+        </p>
+          <button @click="showMore()">عرض المزيد</button>
+          <p v-show="show" class="mt-3">نساعد عملائنا على تبسيط أعمالهم من خلال مجموعة
+         الحلول والخدمات والتطبيقات التي تساعد على تسهيل سير وتكامل الأعمال بالإضافة
+          إلى الدعم التقني والمتابعة المستمرة.
+        </p>
+
+
+    </div>
+
+    </div>
+  </div>
+
+  </div>
+</template>
+<script>
+export default{
+  name:"our-services",
+  data(){
+    return{
+      show:false
+    }
+  },
+  methods:{
+    showMore(){
+      this.show=!this.show
+
+    }
+  }
+}
+</script>
+<style scoped>
+.content{
+  padding:40px 120px
+}
+.leftSide{
+  width:50%
+}
+h2{
+  color: var(--Primary2, #00ABAD);
+text-align: right;
+
+/* 24 Bold */
+font-family: Cairo;
+font-size: 24px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+}
+.leftSide p{
+  color: var(--Black, #12151C);
+text-align: justify;
+width:474px;
+direction: rtl;
+font-family: Cairo;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: 1.7;
+margin: left;
+
+
+}
+.leftSide h3{
+  color: var(--Light-blue2, #09B9E1);
+text-align: right;
+
+/* 18 Reg */
+font-family: Cairo;
+font-size: 18px;
+font-style: normal;
+font-weight: 400;
+line-height: 2;
+}
+.middle{
+  border-radius: 4px;
+background: var(--light-gry, #D0D0D2);
+width: 4px;
+height: 263px;
+flex-shrink: 0;
+margin:0 18px;
+
+}
+.chield{
+  border-radius: 4px;
+background: var(--Primary2, #00ABAD);
+width: 8px;
+height: 104px;
+flex-shrink: 0;
+position: relative;
+right:2px;
+}
+.rightSide h3{
+  color: var(--Blue2, #28649C);
+text-align: right;
+
+/* 18 Bold */
+font-family: Cairo;
+font-size: 18px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+}
+button{
+  color: var(--White, #FFF);
+text-align: justify;
+
+font-family: Cairo;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+border:none;
+border-radius: 8px;
+display: inline-flex;
+padding: 4px 8px 6px 8px;
+justify-content: center;
+align-items: center;
+gap: 8px;
+background: var(--Primary2, #00ABAD);
+width: fit-content;
+margin-top: 28px;
+}
+svg{
+  margin-right: 132px;
+  width: 80px;
+height: 80px;
+flex-shrink: 0;
+margin-top: 16px;
+}
+.rightSide p{
+  width: 389px;
+     direction: rtl;
+    text-align: right;
+
+}
+
+</style>
