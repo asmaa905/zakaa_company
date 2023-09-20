@@ -1,6 +1,5 @@
 <template>
   <div class="content d-flex">
-    <div class="container">
 
     <div class="leftSide d-flex align-items-end flex-column">
       <h2>حلول تقنية متكاملة</h2>
@@ -47,7 +46,6 @@
     </div>
   </div>
 
-  </div>
 </template>
 <script>
 export default{

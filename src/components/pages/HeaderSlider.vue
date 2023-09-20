@@ -15,8 +15,10 @@
           <div style="max-height: 100%; width:100%; padding-right: 30px; padding-top:30px">
           <h6>ذكاء الدولية توفر لك.....</h6>
             <div class="input-wrapper">
-              <p aria-label="Ask us anything" style="font-size:40px;font-weight:bold; color: #09B9E1">البرمجة</p>
-              <span class="placeholder"></span>
+            <br/>
+              <p class="animated-text1" style="font-size:40px;font-weight:bold; color: #09B9E1">البرمجة</p>
+              <br/>
+
             </div>
             <p>نقدم لك جميع خدمات المواقع الإلكترونية وتطبيقات الموبايل وبرامج إدارة المؤسسات وكل <br/>
               ,الحلول التقنية الذكية التي تحتاجها في إنشاء وتطوير أعمالك لتنقل أعمالك للمستقبل<br/>
@@ -167,12 +169,59 @@ text-align: right;
 
 }
 /*animated text  */
+.animated-text1 {
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 1px solid black;
+  animation: typing1 3s steps(30) infinite;
+  width: 20%;
+  display: block;
+  height: 50px;
+}
 
-body {
-  display: grid;
-  height: 100vh;
-  place-items: center;
-  width: 100%;
+@keyframes typing1 {
+  from {
+    width: 0;
+  }
+  to {
+    width:20%;
+  }
+}
+.animated-text2 {
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 1px solid black;
+  animation: typing2 3s steps(30) infinite;
+  width: 10%;
+  display: none;
+
+}
+
+@keyframes typing2 {
+  from {
+    width: 0;
+  }
+  to {
+    width:10%;
+  }
+}
+.animated-text3 {
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 1px solid black;
+  animation: typing3 3s steps(30) infinite;
+  width: 10%;
+  display: none;
+
+}
+
+@keyframes typing3 {
+  from {
+    width: 0;
+  }
+  to {
+    width:10%;
+  }
 }
 
 

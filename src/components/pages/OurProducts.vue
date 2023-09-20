@@ -1,6 +1,6 @@
 <template>
 <div>
-  <div class="content container">
+  <div class="content ">
     <h2>نوفر حلول تقنية</h2>
     <p>يمكننا مساعدتك في تخطيط وتصميم وتطوير أي نوع من المنتجات الرقمية.</p>
     <div class="d-flex gap-3  ">
