@@ -11,19 +11,27 @@
         >
         <div 
           id="overlay"
-          style="max-height: 100%; width:100%; background-color: rgba(0,0,0,54%); ">
-          <div style="max-height: 100%; width:100%; padding-right: 30px; padding-top:30px">
-          <h6>ذكاء الدولية توفر لك.....</h6>
+          style="max-height: 100%; width:100%; background-color: rgba(0,0,0,54%); "
+          :style="`${lang=='en'?' direction: ltr;justify-content: left; text-align: left;':  ' direction: rtl;justify-content: right; text-align: right;'}`"
+
+          >
+          <div style="max-height: 100%; width:100%; padding-top:30px"
+          :style="`${lang == 'en'?'padding-left: 30px; ':'padding-right: 30px;'}`"
+          >
+          <h6
+          :style="`${lang=='en'?' text-align: left;' : 'text-align: right;'}`"
+          >ذكاء الدولية توفر لك.....</h6>
             <div class="input-wrapper">
             <br/>
-              <p class="animated-text1" style="font-size:40px;font-weight:bold; color: #09B9E1">البرمجة</p>
+              <div class="animated-part ">
+                <div class="animated-line"></div>
+                <p class="animated-text1" style="font-size:40px;font-weight:bold; color: #09B9E1">البرمجة</p>
+              </div>
               <br/>
 
             </div>
-            <p>نقدم لك جميع خدمات المواقع الإلكترونية وتطبيقات الموبايل وبرامج إدارة المؤسسات وكل <br/>
-              ,الحلول التقنية الذكية التي تحتاجها في إنشاء وتطوير أعمالك لتنقل أعمالك للمستقبل<br/>
-               وتواكب تقنيات الذكاء الاصطناعي.</p>
-            <b-button>تواصل معنا</b-button>
+            <p>نقدم لك جميع خدمات المواقع الإلكترونية وتطبيقات الموبايل وبرامج إدارة المؤسسات وكل <br/>,الحلول التقنية الذكية التي تحتاجها في إنشاء وتطوير أعمالك لتنقل أعمالك للمستقبل<br/> وتواكب تقنيات الذكاء الاصطناعي.</p>
+            <b-button>{{ $t('contactUs') }}</b-button>
           </div>
           </div>
         <img 
@@ -61,9 +69,18 @@
             src: "/imgsSlides/Pic4.jpg",
           },
         ],
+        paragragh:{
+          "en":"We provide you with all website services, mobile applications, enterprise management programs, and all The smart technical solutions you need to create and develop your business to move your business to the futureKeeping pace with artificial intelligence technologies.",
+          "ar":">نقدم لك جميع خدمات المواقع الإلكترونية وتطبيقات الموبايل وبرامج إدارة المؤسسات وكل <br/>,الحلول التقنية الذكية التي تحتاجها في إنشاء وتطوير أعمالك لتنقل أعمالك للمستقبل<br/> وتواكب تقنيات الذكاء الاصطناعي."
+        }
       };
     },
-  
+    computed :{
+    lang() {
+      return localStorage.getItem("lang") || "en";
+
+    }
+  },
     methods: {
       nextSlide() {
         this.current++;
@@ -93,6 +110,7 @@
     created() {
       this.play();
     },
+
   };
   </script>
   
@@ -124,13 +142,11 @@ position: absolute;
 
   display: flex;
   flex-direction: column;
-  justify-content: right;
-  direction: rtl;
+
   color:#ffffff !important;
   background-color: rgba(0,0,0,0.5);
   z-index: 2;
-  cursor: pointer;
-  text-align: right;
+
 }
 #overlay button {
 
@@ -165,64 +181,120 @@ font-size: 20px;
 font-weight: 400;
 line-height: 37px;
 letter-spacing: 0em;
-text-align: right;
+// text-align: right;
 
 }
 /*animated text  */
+// .animated-text1 {
+//   overflow: hidden;
+//   white-space: nowrap;
+//   border-right: 1px solid black;
+//   animation: typing1 3s alternate steps(30) infinite;
+//   width: 20%;
+//   display: block;
+//   height: 50px;
+// }
+
+// @keyframes typing1 {
+//   from {
+//     width: 0;
+//   }
+
+// }
+// .animated-text2 {
+//   overflow: hidden;
+//   white-space: nowrap;
+//   border-right: 1px solid black;
+//   animation: typing2 3s steps(30) infinite;
+//   width: 10%;
+//   display: none;
+
+// }
+
+// @keyframes typing2 {
+//   from {
+//     width: 0;
+//   }
+//   to {
+//     width:10%;
+//   }
+// }
+// .animated-text3 {
+//   overflow: hidden;
+//   white-space: nowrap;
+//   border-right: 1px solid black;
+//   animation: typing3 3s steps(30) infinite;
+//   width: 10%;
+//   display: none;
+
+// }
+
+// @keyframes typing3 {
+//   from {
+//     width: 0;
+//   }
+//   to {
+//     width:10%;
+//   }
+// }
+
+
+.animated-part {
+  position: relative;
+  width:230px;
+}
 .animated-text1 {
   overflow: hidden;
-  white-space: nowrap;
-  border-right: 1px solid black;
-  animation: typing1 3s steps(30) infinite;
-  width: 20%;
+ font-weight:bold; 
+ color: #09B9E1;
+  /* animation: typing1 5s alternate steps(10) infinite; */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 ; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: .15em; /* Adjust as needed */
+  animation: 
+    typing 1.5s  alternate-reverse steps(10) infinite ;
   display: block;
+  font-size: 40px;
+  width: 25%;
   height: 50px;
+ // transition: all 0.5;
+  left:50%;
+ text-align: left;
 }
-
-@keyframes typing1 {
-  from {
-    width: 0;
+@keyframes typing {
+  0% {
+     width: 0%;
+   //  transition: all;
   }
-  to {
-    width:20%;
-  }
-}
-.animated-text2 {
-  overflow: hidden;
-  white-space: nowrap;
-  border-right: 1px solid black;
-  animation: typing2 3s steps(30) infinite;
-  width: 10%;
-  display: none;
+  60% {
+   width: 50%;
 
-}
 
-@keyframes typing2 {
-  from {
-    width: 0;
   }
-  to {
-    width:10%;
-  }
-}
-.animated-text3 {
-  overflow: hidden;
-  white-space: nowrap;
-  border-right: 1px solid black;
-  animation: typing3 3s steps(30) infinite;
-  width: 10%;
-  display: none;
+ 100% {
+   width: 100%;
+   transition: all;
 
-}
-
-@keyframes typing3 {
-  from {
-    width: 0;
-  }
-  to {
-    width:10%;
   }
 }
 
+@keyframes blink-caret {
+  0% {
+    display: none
+  }
 
+ 100% {
+    width: block
+  }
+}
+.animated-line {
+ position: absolute;
+ margin:auto;
+  width: 50% ;
+  height: 60px;
+  left:48%;
+  border-left: .30em solid #09B9E1;
+  animation: blink-caret 0.5s  alternate-reverse steps(2) infinite ; 
+  display: block;
+}
   </style>

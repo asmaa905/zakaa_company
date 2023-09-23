@@ -2,6 +2,8 @@
   "compilerOptions": {
     "target": "es5",
     "module": "esnext",
+    "resolveJsonModule": true,
+
     "baseUrl": "./",
     "moduleResolution": "node",
     "paths": {

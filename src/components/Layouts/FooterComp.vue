@@ -1,6 +1,12 @@
 <template>
-    <footer class="text-center text-lg-end  text-xs-center"  style="background-color: #12151C;color:white">      
-      <section class="text-align-right">
+    <footer 
+    class="text-center  text-xs-center"  
+    style="background-color: #12151C;color:white"
+    :style="`direction:${ lang=='en'?'ltr'  : 'rtl'};`"
+    >      
+      <section 
+      :class="`text-align-${ lang=='en'?'left'  : 'right'};`"
+      >
         <div class="container text-center text-md-end  text-xs-center p-4 ">
           <div class="row mt-3 ">
             <!-- company info -->
@@ -13,7 +19,7 @@
               <!-- company name -->
               <h6 class="text-uppercase fw-bold mb-4"
                >
-               <span > ذكاء الدولية -مصر </span>
+               <span >{{ $t('thakaaInternational') }} - {{  $t('Egypt') }}  </span>
               </h6>
               <div class="mx-0">
                <!--phone number-->
@@ -28,7 +34,7 @@
                 class="address d-flex flex-row flex-gap-1" 
               >
               <i class="fa-solid fa-location-dot"></i>
-              <span class="flex-2 mx-2">القاهرة - مدينة بدر - الحى الثانى</span>
+              <span class="flex-2 mx-2">{{ $t('companyAddress') }}</span>
               </p>
               <!-- E-mail -->
               <p 
@@ -41,45 +47,46 @@
             </div>
             <!-- menu-->
             <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4 d-flex flex-column align-items-start">
-              <h6 class="text-uppercase fw-bold mb-4 section-title">القائمة</h6>
+              <h6 class="text-uppercase fw-bold mb-4 section-title">{{ $t('menu')  }}</h6>
               
-              <p v-text="'الرئيسية'"></p>
-              <p  v-text="'من نحن' "></p>
-              <p v-text="'الخدمات ' "></p>
-              <p v-text="'الوظائف' "></p>
+              <p v-text=" $t('Home')"></p>
+              <p  v-text=" $t('AboutUs') "></p>
+              <p v-text=" $t('services') "></p>
+              <p v-text=" $t('jobs')"></p>
             </div>
             <!-- services-->
-            <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4 d-flex flex-column align-items-start">
+            <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4 d-flex flex-column"
+            :class="` align-items-${lang == 'en'?'end':'start'}`">
               <h6 class="text-uppercase fw-bold mb-4 section-title">
-                الخدمات
+                {{ $t('services') }}
               </h6>
               <div class="d-flex flex-row gap-8" style="gap:8px">
                 <img src="@/assets/solar_code-square-bold.svg"  alt="code" />
-                <p class="flex-2" v-text="'حلول تقنية متكاملة '"></p>
+                <p class="flex-2" v-text="$t('integratedTechnicalSolutions')"></p>
               </div>
               
               <div class="d-flex flex-row flex-gap-1" style="gap:8px">
                 <img src="@/assets/solar_code-square-bold.svg"  alt="code" />
-                <p  v-text="'حلول تقنية متكاملة '"></p>
+                <p  v-text="$t('integratedTechnicalSolutions')"></p>
               </div>
               <div class="d-flex flex-row flex-gap-2" style="gap:8px">
                 <img src="@/assets/solar_code-square-bold.svg"  alt="code" />
-                <p  v-text="'تدريب وتأهيل'"></p>
+                <p  v-text="$t('TrainingAndRehabilitation')"></p>
               </div>
               <div class="d-flex flex-row flex-gap-2" style="gap:8px">
                 <img src="@/assets/solar_code-square-bold.svg"  alt="code" />
-                <p  v-text="'الدراسات والاستشارات'"></p>
+                <p  v-text="$t('StudieAndConsultations')"></p>
               </div>
 
             </div>
             <!-- last news -->
             <div class=" col-md-2 col-lg-2 col-xl-2 mx-auto mb-4 d-flex flex-column align-items-start " style="width:fit-content !important">
               <h6 class="text-uppercase fw-bold mb-4 section-title">
-                اخر الاخبار
+             {{ $t('lastNews') }}
               </h6>
               <div>
                 <b-form inline >
-                  <label class="text-align-right">ادخل بريدك الالكترونى ليصلك كل جديد</label>
+                  <label :class="`text-align-${lang=='en'?'left':'right'}`">{{ $t('writeYourEmailToGetNews') }}</label>
                   <div class="email-from d-flex mt-2  " >
                       <b-input
                         class="flex-1 mb-2 mr-sm-2 mb-sm-0"
@@ -109,7 +116,7 @@
       <!-- Copyright -->
       <div class="text-center pb-4 copy-right" style="background-color: rgba(0, 0, 0, 0.05);">
        
-       <span>2023جميع الحقوق محفوظة لشركة ذكاء الدولية </span>
+       <span>{{ $t('copyRights') }}</span>
        <span class="icon">	&copy;</span> 
       </div>
  </footer>
@@ -117,12 +124,18 @@
 <script>
 export default {
   name: "footer-comp",
+  computed :{
+    lang() {
+      return localStorage.getItem("lang") || "en";
+
+    }
+  }
 };
 </script>
 
-<style>
+<style scoped>
 footer{
-  direction: rtl;
+ 
   font-size:16px; 
   
   font-family:cairo;
@@ -132,7 +145,7 @@ footer{
   font-weight:400px;
 
 }
-.copy-right icon {
+.copy-right .icon {
   font-size:14px;
   font-weight:400px;
   font-weight: bold;

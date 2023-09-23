@@ -1,16 +1,28 @@
 <template>
   <div class="img content" >
-<h2>اشترك ليصلك إشعار!</h2>
-<p>قم بالتسجيل بالنشرة البريدية لتلقي التحديثات والأخبار الجديدة.</p>
+<h2
+:style="`${lang=='en'?'text-align: left;':' text-align: right;'}`"
+
+>{{ $t('subscribeToGetNotations') }}</h2>
+<p
+:style="`${lang=='en'?'text-align: left;':' text-align: right;'}`"
+
+>{{ $t('subscribeInEmailToGetUpdatesAndNewNews') }}</p>
 <form>
-  <button>اشترك</button>
-  <input type="email" placeholder="ادخل بريدك الإلكتروني"/>
+  <button>{{ $t('subscribe') }}</button>
+  <input 
+  type="email"
+
+  :placeholder="$t('EnterYourEmail')"
+  :style="`${lang=='en'?' justify-content: flex-start;':' justify-content: flex-end;'}`"
+  />
 </form>
   </div>
 </template>
 <script>
 export default {
   name: "contact-us",
+  
 };
 </script>
 <style scoped>
@@ -35,11 +47,10 @@ font-size: 18px;
 font-style: normal;
 font-weight: 700;
 line-height: normal;
-direction: rtl;
+/* direction: rtl; */
 }
 p{
   color: var(--White, #FFF);
-text-align: right;
 
 /* 16 Reg */
 font-family: Cairo;
@@ -51,7 +62,6 @@ margin: 16px 0;
 }
 button{
   color: var(--White, #FFF);
-text-align: right;
 
 /* 16 Reg */
 font-family: Cairo;
@@ -77,7 +87,6 @@ background: var(--White, #FFF);
 
 display: flex;
 padding: 9px 16px 9px 168px;
-justify-content: flex-end;
 align-items: center;
 box-shadow: 0px 4px 4px 0px rgba(144, 144, 144, 0.25);
 margin-left: 16px;

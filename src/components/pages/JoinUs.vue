@@ -1,18 +1,18 @@
 <template>
-    <div class="join-us">
+    <div class="join-us" id="JoinUs">
         <div class="overlay">
             <h3
              style="
             color:#ffffff ;
             font-size:18px;
             font-weight:400px
-            ">انضم إلينا.</h3>
+            ">{{ $t('JoinUs') }}</h3>
             <p          
             style="
             color:#ffffff ;
             font-size:18px;
             font-weight:400px
-            ">دعونا نبني أشياء عظيمة معًا!</p>
+            ">{{ $t('letsBulidGreatThingsTogether') }}</p>
             <b-button 
             style="
             color:#000000 ;
@@ -20,8 +20,7 @@
             font-size:16px;
             font-weight:400px
             "
-            >تعرف على الوظائف المتاحة
-          </b-button>
+            >{{ $t('SHowAvalableJobs') }}</b-button>
         </div>
       <video  controls>
         <!--poster-->
@@ -34,7 +33,12 @@
 <script>
 
 export default {
+    computed :{
+    lang() {
+      return localStorage.getItem("lang") || "en";
 
+    }
+  },
 }
 </script>
 <style scoped>

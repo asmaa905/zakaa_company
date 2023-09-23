@@ -18,7 +18,7 @@
 
 <script>
 import MainLayout from '../components/Layouts/MainLayout.vue'
-import ContentUs from '../components/pages/ContactUss.vue'
+import ContentUs from '../components/pages/ContactUs.vue'
 import HeaderSlider from '../components/pages/HeaderSlider.vue'
 import OurServies from '@/components/pages/OurServies.vue'
 import HowToWork from '@/components/pages/HowToWork.vue'

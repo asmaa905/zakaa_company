@@ -2,7 +2,9 @@
   <div class="content d-flex">
 
     <div class="leftSide d-flex align-items-end flex-column">
-      <h2>حلول تقنية متكاملة</h2>
+      <h2
+      
+      >حلول تقنية متكاملة</h2>
       <p>ننشئ ونطور الحلول التقنية للشركات والمؤسسات
          في المراحل المختلفة بداية من الإنشاء حتى الانطلاق
           بالإضافة للدعم التقني والمتابعة المستمرة</p>
@@ -29,12 +31,18 @@
   </defs>
 </svg>
       <div class="rightSide d-flex flex-column align-items-end">
-      <h2>خدماتنا</h2>
-      <p>نساعد عملائنا على تبسيط أعمالهم من خلال مجموعة
+      <h2
+      :style="`${lang=='en'?'text-align: left;':'text-align: right; '}`"
+
+      >{{ $t('ourServies') }}</h2>
+      <p
+      :style="`${lang=='en'?'text-align: left;':'text-align: right; '}`"
+
+      >نساعد عملائنا على تبسيط أعمالهم من خلال مجموعة
          الحلول والخدمات والتطبيقات التي تساعد على تسهيل سير وتكامل الأعمال بالإضافة
           إلى الدعم التقني والمتابعة المستمرة.
         </p>
-          <button @click="showMore()">عرض المزيد</button>
+          <button @click="showMore()">{{ $t('ShowMore') }}</button>
           <p v-show="show" class="mt-3">نساعد عملائنا على تبسيط أعمالهم من خلال مجموعة
          الحلول والخدمات والتطبيقات التي تساعد على تسهيل سير وتكامل الأعمال بالإضافة
           إلى الدعم التقني والمتابعة المستمرة.
@@ -55,6 +63,12 @@ export default{
       show:false
     }
   },
+  computed :{
+    lang() {
+      return localStorage.getItem("lang") || "en";
+
+    }
+  },
   methods:{
     showMore(){
       this.show=!this.show
@@ -72,7 +86,7 @@ export default{
 }
 h2{
   color: var(--Primary2, #00ABAD);
-text-align: right;
+/* text-align: right; */
 
 /* 24 Bold */
 font-family: Cairo;
@@ -85,7 +99,7 @@ line-height: normal;
   color: var(--Black, #12151C);
 text-align: justify;
 width:474px;
-direction: rtl;
+/* direction: rtl; */
 font-family: Cairo;
 font-size: 16px;
 font-style: normal;
@@ -97,7 +111,7 @@ margin: left;
 }
 .leftSide h3{
   color: var(--Light-blue2, #09B9E1);
-text-align: right;
+/* text-align: right; */
 
 /* 18 Reg */
 font-family: Cairo;
@@ -122,11 +136,11 @@ width: 8px;
 height: 104px;
 flex-shrink: 0;
 position: relative;
-right:2px;
+/* right:2px; */
 }
 .rightSide h3{
   color: var(--Blue2, #28649C);
-text-align: right;
+/* text-align: right; */
 
 /* 18 Bold */
 font-family: Cairo;
@@ -164,8 +178,8 @@ margin-top: 16px;
 }
 .rightSide p{
   width: 389px;
-     direction: rtl;
-    text-align: right;
+   /* //  direction: rtl; */
+    /* text-align: right; */
 
 }
 

@@ -23,15 +23,24 @@
       <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_612_158" result="shape"/>
     </filter>
   </defs>
-</svg>
-<div class="img2"></div>
+        </svg>
+        <div class="img2"></div>
       </div>
         <div class="rightSide d-flex flex-column">
-          <h3>كيف نعمل؟</h3>
+          <h3
+          :style="`text-align:${ lang=='en'?'left'  : 'right'};`"
+
+          >{{ $t('HowToWork') }}</h3>
           <ol >
-            <li>الحصول على المعلومات</li>
+            <li
+            :style="`${ lang=='en'?'text-align:left; direction:ltr'  : '`text-align:right; direction:rtl;'}`"
+
+            >{{ $t('getInformation') }}</li>
           </ol>
-        <p>نحن لا ننظر فقط إلى البيانات. نحن نبحث عن المعلومات.
+        <p
+        :style="`text-align:${ lang=='en'?'left'  : 'right'};`"
+
+        >نحن لا ننظر فقط إلى البيانات. نحن نبحث عن المعلومات.
           المعلومات التي تقود التحليل والرؤى ، والتي تمكننا من اكتساب فهم أفضل للأفراد والصناعة والأسواق ، وبالتالي تساعدنا على رسم طريق أفضل لتحقيق نتائج أفضل.</p>
         </div>
 
@@ -43,6 +52,12 @@
 <script>
 export default {
   name: "how-to-work",
+  computed :{
+    lang() {
+      return localStorage.getItem("lang") || "en";
+
+    }
+  },
 };
 </script>
 <style scoped>
@@ -70,7 +85,7 @@ export default {
 }
 h3{
   color: var(--Blue2, #28649C);
-text-align: right;
+/* text-align: right; */
 
 font-family: Cairo;
 font-size: 18px;
@@ -81,9 +96,9 @@ margin-bottom: 32px;
 }
 li{
   color: var(--White, #FFF);
-text-align: right;
+/* text-align: right; */
 
-direction: rtl;
+
 font-family: Cairo;
 font-size: 24px;
 font-style: normal;
@@ -95,7 +110,7 @@ margin-right: 25px;
 p{
   color: var(--White, #FFF);
 text-align: justify;
-text-align: right;
+/* text-align: right; */
 /*  */
 font-family: Cairo;
 font-size: 20px;
