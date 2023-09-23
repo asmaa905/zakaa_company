@@ -51,6 +51,22 @@
       return {
         current: 0,
         timer: 0,
+        timerWord:0,
+        currentWord: 0,
+        animatedWords:[
+        {
+            id: 1,
+            text: "البرمجة",
+          },
+          {
+            id: 2,
+            text: "التطبيق",
+          },
+          {
+            id: 3,
+            text: "التقدم",
+          },
+        ],
         slides: [
           {
             id: 1,
@@ -91,7 +107,7 @@
         let app = this;
         this.timer = setInterval(function () {
           app.nextSlide();
-        }, 2000);
+        }, 3000);
       },
       resetPlay() {
         clearInterval(this.timer);
@@ -106,9 +122,26 @@
         this.current = i;
         this.resetPlay();
       },
+
+      // /* animate text */
+      // Animate() {
+      //   this.timerWord = setInterval(function () {
+      //     this.secondWord();
+      //   }, 3000);
+      // },
+      // secondWord() {
+      //   this.currentWord++;
+      //   if (this.currentWord >= this.animatedWords.length) this.currentWord = 0;
+      //   this.resetAnimateWord();
+      // },
+      // resetAnimateWord() {
+      //   clearInterval(this.timerWord);
+      //   this.Animate();
+      // },
     },
     created() {
       this.play();
+    //  this.Animate();
     },
 
   };
@@ -271,12 +304,20 @@ letter-spacing: 0em;
 
 
   }
- 100% {
-   width: 100%;
-   transition: all;
-
+  100% {
+    width:100%;
   }
 }
+.animated-text2 {
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 1px solid black;
+  animation: typing2 3s steps(30) infinite;
+  width: 10%;
+  display: none;
+
+  }
+
 
 @keyframes blink-caret {
   0% {
