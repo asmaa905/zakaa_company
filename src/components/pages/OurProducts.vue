@@ -9,7 +9,8 @@
     :style="`text-align:${ lang=='en'?'left'  : 'right'};`"
     >{{ $t('WeCanHelpYouToDesignOrDeveloAnyDigitalSolution') }}</p>
     <div class="d-flex gap-3  align-items-center  justify-content-center;">
-        <div class="cardd d-flex ">
+      <div class="cardd ">
+    <div class="d-flex card-cyper">
           <h2
           :style="`text-align:${ lang=='en'?'left'  : 'right'};`"
 
@@ -25,6 +26,18 @@
             </defs>
           </svg>
         </div>
+        <div 
+        class=" card-cyper-more"
+        style=" display:none;"
+        >
+           <p
+           :style="`text-align:${ lang=='en'?'left'  : 'right'}; `"
+           >
+            نسعى إلى حلول الويب المبتكرة لتصميم المواقع الإلكترونية بشكل فعال ومتجاوب مع جميع الأجهزة.
+           </p>
+        </div>
+      </div>  
+  
         <div class="cardd d-flex ">
 <h2
 :style="`text-align:${ lang=='en'?'left'  : 'right'};`"
@@ -172,5 +185,18 @@ line-height: normal;
 .cardd svg{
   margin-left: 16px;
 }
+.card-cyper{
+  transition:1s all;
+}
+.card-cyper:hover .card-cyper-more{
+  display: block;
+  transform: translate(-25px, -25px);/* transform تحويل حلة العنصر + + - - */
+  /* transition:1s all; */
 
+} 
+.card-cyper:hover{
+  transform: translate(-25px, -25px);/* transform تحويل حلة العنصر + + - - */
+  display: none;
+
+}
 </style>
