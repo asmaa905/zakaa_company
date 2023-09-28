@@ -22,7 +22,12 @@
 <script>
 export default {
   name: "contact-us",
-  
+  computed :{
+    lang() {
+      return localStorage.getItem("lang") || "en";
+
+    }
+  },
 };
 </script>
 <style scoped>

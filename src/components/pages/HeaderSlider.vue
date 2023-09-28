@@ -23,15 +23,21 @@
           >ذكاء الدولية توفر لك.....</h6>
             <div class="input-wrapper">
             <br/>
-              <div class="animated-part ">
-                <div class="animated-line"></div>
-                <p class="animated-text1" style="font-size:40px;font-weight:bold; color: #09B9E1">البرمجة</p>
-              </div>
+                <button  
+                    class="btn2 button"
+                    style="font-size:40px;font-weight:bold; color: #09B9E1"
+                    v-for="(itemm, i) in animatedWords"
+                    :key="i"
+                    :style="`display: ${currentWord == i ? 'block' : 'none'}`"                >
+                <div>
+                    <span>{{ itemm.text }}</span>
+                </div>
+            </button>
               <br/>
 
             </div>
             <p>نقدم لك جميع خدمات المواقع الإلكترونية وتطبيقات الموبايل وبرامج إدارة المؤسسات وكل <br/>,الحلول التقنية الذكية التي تحتاجها في إنشاء وتطوير أعمالك لتنقل أعمالك للمستقبل<br/> وتواكب تقنيات الذكاء الاصطناعي.</p>
-            <b-button>{{ $t('contactUs') }}</b-button>
+            <b-button class="cc">{{ $t('contactUs') }}</b-button>
           </div>
           </div>
         <img 
@@ -51,7 +57,7 @@
       return {
         current: 0,
         timer: 0,
-        timerWord:0,
+        timerWord:null,
         currentWord: 0,
         animatedWords:[
         {
@@ -122,26 +128,27 @@
         this.current = i;
         this.resetPlay();
       },
-
       // /* animate text */
-      // Animate() {
-      //   this.timerWord = setInterval(function () {
-      //     this.secondWord();
-      //   }, 3000);
-      // },
-      // secondWord() {
-      //   this.currentWord++;
-      //   if (this.currentWord >= this.animatedWords.length) this.currentWord = 0;
-      //   this.resetAnimateWord();
-      // },
-      // resetAnimateWord() {
-      //   clearInterval(this.timerWord);
-      //   this.Animate();
-      // },
+      secondWord() {
+        this.currentWord++;
+        if (this.currentWord >= this.animatedWords.length) this.currentWord = 0;
+        this.resetAnimateWord();
+      },
+      Animate() {
+        let app = this;
+        this.timerWord = setInterval(function () {
+          app.secondWord();
+        }, 3600);
+      },
+    
+      resetAnimateWord() {
+        clearInterval(this.timerWord);
+        this.Animate();
+      },
     },
     created() {
       this.play();
-    //  this.Animate();
+      this.Animate();
     },
 
   };
@@ -181,7 +188,7 @@ position: absolute;
   z-index: 2;
 
 }
-#overlay button {
+#overlay .cc {
 
   width: 150px;
 height: 40px;
@@ -217,125 +224,162 @@ letter-spacing: 0em;
 // text-align: right;
 
 }
-/*animated text  */
-// .animated-text1 {
-//   overflow: hidden;
-//   white-space: nowrap;
-//   border-right: 1px solid black;
-//   animation: typing1 3s alternate steps(30) infinite;
-//   width: 20%;
-//   display: block;
-//   height: 50px;
-// }
-
-// @keyframes typing1 {
-//   from {
-//     width: 0;
-//   }
-
-// }
-// .animated-text2 {
-//   overflow: hidden;
-//   white-space: nowrap;
-//   border-right: 1px solid black;
-//   animation: typing2 3s steps(30) infinite;
-//   width: 10%;
-//   display: none;
-
-// }
-
-// @keyframes typing2 {
-//   from {
-//     width: 0;
-//   }
-//   to {
-//     width:10%;
-//   }
-// }
-// .animated-text3 {
-//   overflow: hidden;
-//   white-space: nowrap;
-//   border-right: 1px solid black;
-//   animation: typing3 3s steps(30) infinite;
-//   width: 10%;
-//   display: none;
-
-// }
-
-// @keyframes typing3 {
-//   from {
-//     width: 0;
-//   }
-//   to {
-//     width:10%;
-//   }
-// }
 
 
-.animated-part {
-  position: relative;
-  width:230px;
-}
-.animated-text1 {
-  overflow: hidden;
- font-weight:bold; 
- color: #09B9E1;
-  /* animation: typing1 5s alternate steps(10) infinite; */
-  white-space: nowrap; /* Keeps the content on a single line */
-  margin: 0 ; /* Gives that scrolling effect as the typing happens */
-  letter-spacing: .15em; /* Adjust as needed */
-  animation: 
-    typing 1.5s  alternate-reverse steps(10) infinite ;
-  display: block;
-  font-size: 40px;
-  width: 25%;
-  height: 50px;
- // transition: all 0.5;
-  left:50%;
- text-align: left;
-}
-@keyframes typing {
-  0% {
-     width: 0%;
-   //  transition: all;
-  }
-  60% {
-   width: 50%;
 
 
-  }
-  100% {
-    width:100%;
-  }
-}
-.animated-text2 {
-  overflow: hidden;
-  white-space: nowrap;
-  border-right: 1px solid black;
-  animation: typing2 3s steps(30) infinite;
-  width: 10%;
-  display: none;
-
-  }
-
-
+/* The typewriter cursor effect */
 @keyframes blink-caret {
-  0% {
-    display: none
-  }
-
- 100% {
-    width: block
-  }
+  from, to { border-color: transparent }
+  50% { border-color: #09B9E1; }
 }
-.animated-line {
- position: absolute;
- margin:auto;
-  width: 50% ;
-  height: 60px;
-  left:48%;
-  border-left: .30em solid #09B9E1;
-  animation: blink-caret 0.5s  alternate-reverse steps(2) infinite ; 
-  display: block;
+
+#overlay  .button {
+    top :60px;
+    // position: fixed;
+    border-left: 5px solid #09B9E1;
+    height:50px;
+    color:#ffffff;
+    font-size: 40px;
+    font-weight: 400px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    background:transparent;
+    animation:borderMove 3.5s alternate-reverse step-end ,
+    blink-caret 0.9s step-end infinite;
+    background: none;
+    border-right:unset !important;
+    border-top:unset !important;
+    border-bottom:unset !important;
+    line-height: 8px;
+    font-family: cairo;
+}
+
+#overlay .btn2 {
+  overflow: hidden;
+
+    top:134px;
+    width:130px;
+    letter-spacing: 3px;
+    font-weight: bold;
+     display :none;
+     line-height: 5px;
+}
+#overlay .btn2 div{
+    position: relative;
+    width:100%;
+    
+     left:-55%
+}
+#overlay .btn2 span{
+    position: absolute;
+   
+}
+
+
+
+@keyframes borderMove {
+    0%{
+        padding:  5px 0px 5px 0px;
+    }
+    4%{
+        padding: 5px 0px 5px 10px;
+
+    } 
+    8%{
+        padding:  5px 0px 5px 20px;
+
+    } 
+    12%{
+        padding: 5px 0px 5px 30px;
+
+    } 
+    16%{
+        padding: 5px 0px 5px 40px;
+
+    } 
+    20%{
+        padding: 5px 0px 5px 50px;
+
+    } 
+    24%{
+        padding: 5px  0px  5px 60px;
+    } 
+    28%{
+        padding: 5px 0px 5px 70px
+
+    } 
+   32%{
+        padding: 5px  0px 5px 80px;
+
+    } 
+    38%{
+        padding: 5px 0px 5px 90px;
+
+    } 
+    42%{
+        padding: 5px 0px 5px 100px;
+
+    }
+    46%{
+        padding:  5px 0px 5px 110px;
+    }
+    58%{
+        padding: 5px 0px 5px 120px;
+
+    } 
+    50%{
+        padding: 5px 0px 5px 130px;
+
+    } 
+    54%{
+        padding:  5px 0px 5px 120px;
+
+    } 
+    58%{
+        padding: 5px 0px 5px 110px;
+
+    } 
+    62%{
+        padding: 5px 0px 5px 100px;
+
+    } 
+    66%{
+        padding: 5px 0px 5px 90px;
+
+    } 
+    70%{
+        padding: 5px  0px  5px 80px;
+    } 
+    74%{
+        padding: 5px 0px 5px 70px
+
+    } 
+    78%{
+        padding: 5px  0px 5px 60px;
+
+    } 
+    82%{
+        padding: 5px 0px 5px 50px;
+
+    } 
+    86%{
+        padding: 5px 0px 5px 40px;
+
+    } 
+    90%{
+        padding: 5px  0px  5px 30px;
+    } 
+    94%{
+        padding: 5px 0px 5px 20px
+
+    } 
+    98%{
+        padding: 5px 0px 5px 10px
+
+    } 
+    100%{
+        padding: 5px 0px 5px 0px
+
+    } 
 }
   </style>
