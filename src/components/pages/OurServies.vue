@@ -2,37 +2,40 @@
   <div class="content d-flex">
     <div class="leftSide d-flex align-items-end flex-column">
       <div v-for="service in services" :key="service.id">
-        <h2 v-if="currentServieee.id == service.id">{{ currentServieee.title }}</h2>
-        <h3 v-else @click="showServies(service.id)">{{ service.title }}</h3>
-        
+        <h2 v-if="currentServieee.id == service.id"
+        :style="`text-align:${ lang=='en'?'left'  : 'right'};`"
 
+        >{{ currentServieee.title }}</h2>
+        <h3 v-else @click="showServies(service.id)">{{ service.title }}</h3>
         <p  
           v-if="currentServieee.id == service.id" 
           class="current-service" 
           style="text-wrap: wrap;"
+          :style="`text-align:${ lang=='en'?'left'  : 'right'};`"
         > {{ currentServieee.details }}
       </p>
       </div>
-
     </div>
     <div class="middle ">
-      <div class="chield m-auto"></div>
+      <div v-if="currentServieee.id!== 3" class="chield m-auto"  :style="`top:${currentServieee.id *40}px;`"></div>
+      <div v-if="currentServieee.id === 3" class="chield m-auto"  :style="`top:160px;bottom:0x`"></div>
+
     </div>
-    <div class="d-flex justify-content-between">
-      <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80" fill="none">
-  <g clip-path="url(#clip0_612_65)">
-    <path d="M31.8788 40.8828C32.66 41.8594 33.9263 41.8594 34.7075 40.8828L36.1213 39.1156C36.9025 38.1391 36.9025 36.5563 36.1213 35.5797L31.6562 30L36.12 24.4188C36.9012 23.4422 36.9012 21.8594 36.12 20.8828L34.7062 19.1156C33.925 18.1391 32.6587 18.1391 31.8775 19.1156L24.585 28.2312C23.8037 29.2078 23.8037 30.7906 24.585 31.7672L31.8788 40.8828ZM43.88 39.1172L45.2938 40.8844C46.075 41.8609 47.3413 41.8609 48.1225 40.8844L55.415 31.7688C56.1963 30.7922 56.1963 29.2094 55.415 28.2328L48.1225 19.1172C47.3413 18.1406 46.075 18.1406 45.2938 19.1172L43.88 20.8844C43.0988 21.8609 43.0988 23.4437 43.88 24.4203L48.3438 30L43.88 35.5812C43.0988 36.5578 43.0988 38.1406 43.88 39.1172ZM78 65H47.6925C47.6 68.0953 45.8538 70 43.6 70H36C33.6637 70 31.8725 67.2703 31.9038 65H2C0.9 65 0 66.125 0 67.5V70C0 75.5 3.6 80 8 80H72C76.4 80 80 75.5 80 70V67.5C80 66.125 79.1 65 78 65ZM72 7.5C72 3.375 69.3 0 66 0H14C10.7 0 8 3.375 8 7.5V60H72V7.5ZM64 50H16V10H64V50Z" fill="url(#paint0_linear_612_65)"/>
-  </g>
-  <defs>
-    <linearGradient id="paint0_linear_612_65" x1="0" y1="40" x2="82.8" y2="40" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#00ABAD"/>
-      <stop offset="0.921875" stop-color="#28649C"/>
-    </linearGradient>
-    <clipPath id="clip0_612_65">
-      <rect width="80" height="80" fill="white"/>
-    </clipPath>
-  </defs>
-      </svg>
+    <div class="d-flex justify-content-between" style="">
+      <img 
+        v-if="currentServieee.id !== 3" 
+        class="img" 
+        :src="`/servicesIcons/${currentServieee.icon}`" 
+        alt=""
+        :style="`margin-top:${currentServieee.id *40}px;`"
+      />
+      <img 
+        v-else 
+        class="img" 
+        :src="`/servicesIcons/${currentServieee.icon}`"         
+        alt=""
+        :style="`margin-top:160px;`"
+      />
       <div class="rightSide d-flex flex-column align-items-end">
           <h2
           :style="`${lang=='en'?'text-align: left;':'text-align: right; '}`"
@@ -60,31 +63,36 @@ export default{
     return{
       show:false,
       currentServie:{
-          id:1,
+          id:0,
           title:'حلول تقنية متكاملة',
-          details:"ننشئ ونطور الحلول التقنية للشركات والمؤسسات في المراحل المختلفة بداية من الإنشاء حتى الانطلاق بالإضافة للدعم التقني والمتابعة المستمرة"
+          details:"ننشئ ونطور الحلول التقنية للشركات والمؤسسات في المراحل المختلفة بداية من الإنشاء حتى الانطلاق بالإضافة للدعم التقني والمتابعة المستمرة",
+           icon:'fa_solid_laptop_code.svg'
         },
       services:[
       {
-          id:1,
+          id:0,
           title:'حلول تقنية متكاملة',
           details:"ننشئ ونطور الحلول التقنية للشركات والمؤسسات في المراحل المختلفة بداية من الإنشاء حتى الانطلاق بالإضافة للدعم التقني والمتابعة المستمرة"
-        },
+          ,
+           icon:'fa_solid_laptop_code.svg'},
         {
-          id:2,
+          id:1,
           title:'تسويق وتطوير الاعمال',
           details:"نوفر لك كافة وسائل التسويق الالكتروني ونعملُ لك عليها، لتسويق أعمالك مُنتجاتك ونشر هويتك لأكبر قدر ممكن من العملاء المحتملين."
-        },        
+          ,
+           icon:'uil_chart_line.svg'},        
          {
-          id:3,
+          id:2,
           title:"الدراسات والاستشارات",
           details:"تواصل مع طاقمنا الاستشاري للحصول على خدمات استشارية في المجالات التقنية والإدارية تدعم نمو أعمالك."
-        },
+          ,
+           icon:'ph_users_three_fill.svg'},
         {
-          id:4,
+          id:3,
           title:"التدريب والتأهيل",
           details:"نهدف في ذكاء الدولية إلى تطوير أداء المؤسسات ورفع مهارة الأفراد من خلال إعداد البرامج التدريبية التي توفر الأدوات اللازمة لزيادة الخبرات والمهارات ."
-        }
+          ,
+           icon:'icon_park_solid_every_user.svg' }
       ]
     }
   },
@@ -129,7 +137,7 @@ h2{
 font-family: Cairo;
 font-size: 24px;
 font-style: normal;
-font-weight: 700;
+font-weight: 700px;
 line-height: normal;
 }
 .leftSide p{
@@ -165,6 +173,7 @@ width: 4px;
 height: 263px;
 flex-shrink: 0;
 margin:0 18px;
+position: relative;
 
 }
 .chield{
@@ -173,7 +182,7 @@ background: var(--Primary2, #00ABAD);
 width: 8px;
 height: 104px;
 flex-shrink: 0;
-position: relative;
+position: absolute;
 /* right:2px; */
 }
 .rightSide h3{
@@ -207,12 +216,13 @@ background: var(--Primary2, #00ABAD);
 width: fit-content;
 margin-top: 28px;
 }
-svg{
-  margin-right: 132px;
+.img{
+  /* margin-right: 132px; */
   width: 80px;
 height: 80px;
 flex-shrink: 0;
 margin-top: 16px;
+
 }
 .rightSide p{
   width: 389px;

@@ -7,7 +7,7 @@ import en from "./Locales/en.json";
 
 Vue.use(VueI18n)
 export default new VueI18n({
-    locale: localStorage.getItem('lang') || 'en',
+    locale: localStorage.getItem('lang') || 'ar',
    fallbackLocale: "en",
   
     messages: { ar, en },

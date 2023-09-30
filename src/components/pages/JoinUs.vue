@@ -1,7 +1,7 @@
 <template>
-    <div class="join-us" id="JoinUs">
-        <div class="overlay">
-            <h3
+    <div class="join-us" id="JoinUs" @mouseenter="setClass()">
+        <div class="overlay " v-if="showOverlay"  >
+                        <h3
              style="
             color:#ffffff ;
             font-size:18px;
@@ -21,8 +21,9 @@
             font-weight:400px
             "
             >{{ $t('SHowAvalableJobs') }}</b-button>
+
         </div>
-      <video  controls>
+      <video  controls autoplay>
         <!--poster-->
   <source src="@/assets/video.mp4" type="video/mp4">
   <source src="@/assets/video.mp4" type="video/ogg">
@@ -33,12 +34,25 @@
 <script>
 
 export default {
+  data(){
+    return{
+      showOverlay: false
+    }
+  },
     computed :{
     lang() {
       return localStorage.getItem("lang") || "en";
 
-    }
-  },
+    },  },
+    methods: {
+      setClass(){
+       setTimeout(()=> {
+        this.showOverlay = true
+        }, 500);
+        
+      }
+    },
+
 }
 </script>
 <style scoped>
@@ -69,7 +83,10 @@ flex-shrink: 0;
   background-color: rgba(0,0,0,0.5);
   z-index: 2;
   cursor: pointer;
+  transition: all 100s;
+
 }
+
 .overlay button {
 
 
