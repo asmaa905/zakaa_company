@@ -25,7 +25,7 @@
             <br/>
                 <button  
                     class="btn2 button"
-                    style="font-size:40px;font-weight:bold; color: #09B9E1"
+                    style="font-size:40px;font-weight:bold; "
                     v-for="(itemm, i) in animatedWords"
                     :key="i"
                     :style="`display: ${currentWord == i ? 'block' : 'none'}`"                >
@@ -168,6 +168,7 @@
   .carousel .carousel-inner img {
     width: 100%;
     height: 75vh;
+    box-sizing: border-box;
   }
   .carousel-item {
     position: relative;
@@ -228,24 +229,27 @@ letter-spacing: 0em;
 
 
 
-/* The typewriter cursor effect */
+/* The typewriter cursor effect colorchange*/
 @keyframes blink-caret {
-  from, to { border-color: transparent }
+  from, to {  border-color: #28649C }
   50% { border-color: #09B9E1; }
 }
-
+@keyframes colorchange {
+  from, to {  color: #28649C }
+  50% { color: #09B9E1; }
+}
 #overlay  .button {
     top :60px;
     // position: fixed;
     border-left: 5px solid #09B9E1;
     height:50px;
-    color:#ffffff;
     font-size: 40px;
     font-weight: 400px;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     background:transparent;
     animation:borderMove 3.5s alternate-reverse step-end ,
-    blink-caret 0.9s step-end infinite;
+    colorchange 7s  infinite ease-in,
+    blink-caret 7s infinite ease-in;
     background: none;
     border-right:unset !important;
     border-top:unset !important;
@@ -274,9 +278,6 @@ letter-spacing: 0em;
     position: absolute;
    
 }
-
-
-
 @keyframes borderMove {
     0%{
         padding:  5px 0px 5px 0px;
