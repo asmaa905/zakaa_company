@@ -60,8 +60,10 @@
 export default{
   name:"our-services",
   data(){
-    return{
+    return{ 
       show:false,
+      Servicetimer:null,
+      ServiceCurrent:0,
       currentServie:{
           id:0,
           title:'حلول تقنية متكاملة',
@@ -109,17 +111,42 @@ export default{
       } 
     }
   },
+  mounted(){
+    this.ourServicesAnimate();
+  },
   methods:{
     showMore(){
       this.show=!this.show
     },
     showServies(id) {
       this.services.forEach((s)=>{
-        if(s.id === id)
-        this.currentServieee = s
+        if(s.id === id){
+          this.currentServieee = s
+          this.ServiceCurrent = s.id;
+        }
+
       })
-    }
-  }
+    },
+    
+    nextService() {
+      this.ServiceCurrent++;
+      if (this.ServiceCurrent >= this.services.length)
+        this.ServiceCurrent = 0;
+      this.currentServieee = this.services[this.ServiceCurrent];
+      this.resetServiesAnimate();
+    },
+    ourServicesAnimate() {
+      let app = this;
+
+      this.Servicetimer = setInterval(function(){
+        app.nextService(); // Call the nextService method using app.nextService()
+      }, 3000);
+    },
+      resetServiesAnimate() {
+        clearInterval(this.Servicetimer);
+        this.ourServicesAnimate();
+      }
+  },
 }
 </script>
 <style scoped>
@@ -138,6 +165,7 @@ font-family: Cairo;
 font-size: 24px;
 font-style: normal;
 font-weight: 700px;
+font-weight: bold;
 line-height: normal;
 }
 .leftSide p{
